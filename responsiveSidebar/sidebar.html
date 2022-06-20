@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Joan&family=Open+Sans:wght@300;400;500;600&display=swap");
+      :root {
+        --primary-color: #358597;
+        --secondary-color: #f4a896;
+        /* other colors */
+        --color-1: #f96167;
+        --color-2: #fce77d;
+        /* 3 */
+        --color-3: #e2725a;
+        --color-4: #4a6274;
+      }
+      body {
+        height: 100vh;
+        /* font-family: "Open Sans", sans-serif; */
+        font-family: "Joan", serif;
+        letter-spacing: 2px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .sidebar {
+        height: 100%;
+        width: 300px;
+        background-color: var(--color-3);
+        padding: 30px 20px;
+        transition: all 0.4s ease;
+        font-weight: 600;
+      }
+
+      .sidebar a {
+        color: var(--color-4);
+        text-decoration: none;
+      }
+
+      header {
+        position: relative;
+        height: 100%;
+        width: 100%;
+      }
+
+      .toggle {
+        z-index: 100;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        right: -23%;
+        background-color: var(--color-4);
+        color: white;
+        padding: 10px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      li {
+        width: 100%;
+        font-size: 20px;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--color-4);
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      li:hover {
+        background-color: var(--color-4);
+        color: var(--color-3);
+      }
+
+      li:hover a {
+        color: var(--color-3);
+      }
+
+      a {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 15px;
+      }
+
+      a i {
+        font-size: 25px;
+      }
+
+      span {
+        padding-left: 30px;
+      }
+
+      span.dropdown-icon {
+        padding: 20px;
+      }
+
+      /* after the  */
+
+      .sidebar.sidebarHide {
+        width: 100px;
+      }
+
+      .sidebar.sidebarHide .text {
+        opacity: 0;
+        display: none;
+      }
+
+      .sidebar.sidebarHide .toggle {
+        top: 47%;
+        right: -55px !important;
+      }
+
+      .sidebar.sidebarHide a {
+        justify-content: center;
+        padding: 15px;
+      }
+
+      .sidebar.sidebarHide span.dropdown-icon {
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <header>
+        <i class="bx bxs-chevron-right toggle toggle-sidebar"></i>
+        <nav>
+          <ul>
+            <li>
+              <a href="#">
+                <i class="bx bx-home-alt icon"> </i>
+                <span class="text">Dashboard</span>
+              </a>
+              <span class="dropdown-icon">
+                <i class="bx bxs-chevron-right toggle-dropdown"> </i>
+                <ul>
+                  <li></li>
+                </ul>
+              </span>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="bx bx-bar-chart-alt-2 icon"> </i>
+                <span class="text">Revenue</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="bx bx-bell icon"> </i>
+                <span class="text">Notifications</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="bx bx-pie-chart-alt icon"> </i>
+                <span class="text">Analytics</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="bx bx-heart icon"> </i>
+                <span class="text">Likes</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="bx bx-wallet icon"> </i>
+
+                <span class="text">Wallet</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+    <script>
+      const log = console.log;
+
+      const toggleSidebar = document.querySelector(".toggle-sidebar");
+      const sidebar = document.querySelector(".sidebar");
+
+      toggleSidebar.addEventListener("click", () => {
+        sidebar.classList.toggle("sidebarHide");
+
+        if (toggleSidebar.classList.contains("bxs-chevron-right")) {
+          toggleSidebar.classList.remove("bxs-chevron-right");
+          toggleSidebar.classList.add("bxs-chevron-left");
+        } else {
+          toggleSidebar.classList.add("bxs-chevron-right");
+          toggleSidebar.classList.remove("bxs-chevron-left");
+        }
+      });
+    </script>
+  </body>
+</html>
